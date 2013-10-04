@@ -52,3 +52,19 @@ names(countries)
 names(codes)
 attributes(codes)
 
+names(codes)[2]
+names(codes)[names(codes) == "Country.name"] <- "Country"
+codes <- rename(codes, c(Country.name="Country", ccTLD="TLD"))
+countryCode <- join(codes, countries, by="Country")
+nrow(codes)
+nrow(countries)
+nrow(countryCode)
+
+require(reshape2)
+head(airquality)
+
+airMelt <-melt(airquality, id.vars=c("Month", "Day"), value.name="Value", variable.name="Metric")
+head(airMelt)
+
+airCast <- dcast(airMelt, Month + Day ~ Metric, value.var="Value")
+airCast
