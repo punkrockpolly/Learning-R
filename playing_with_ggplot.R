@@ -32,3 +32,23 @@ meanSum <- function(data)
 ls()
 meanSum
 ddply(diamonds, "cut", meanSum)
+
+meanSum2 <- function(data, col1, col2, func1, func2)
+{
+  return(
+    c(Fist=func1(data[, col1]), Second=func2(data[,col2]))
+    )
+  
+}
+
+ddply(diamonds, "cut", meanSum2, col1="price", col2="carat", func1=mean, func2=sum)
+
+codes <- read.table("http://www.jaredlander.com/data/countryCodes.csv", header=TRUE, sep=",", stringsAsFactors=FALSE)
+countries <- read.table("http://www.jaredlander.com/data/GovType.csv", header=TRUE, sep=",", stringsAsFactors=FALSE)
+
+head(countries)
+View(countries)
+names(countries)
+names(codes)
+attributes(codes)
+
