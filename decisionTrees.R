@@ -20,4 +20,4 @@ creditTree
 typeof(creditTree)
 
 require(rpart.plot)
-rpart.plot(creditTree)
+rpart.plot(creditTree, extra=4)
