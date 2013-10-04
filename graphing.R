@@ -60,3 +60,17 @@ multiplot(houseMod1, houseMod2, houseMod3)
 AIC(houseMod1, houseMod2, houseMod3, houseMod4, houseMod5, houseMod6, houseMod7, houseMod8)
 # AIC is the approach to evaluate the suitability for model, lower the better
 
+dim(housing)
+
+houseTest <- housing[1:10]
+houseTrain <- housing[11:nrow(housing),]
+
+house8 <- lm(ValuePerSqFt ~ SqFt * Units * Income + Boro, data=houseTrain)
+coefplot(house8)
+predict.lm
+predict(house8, newdata=houseTest, se.fit=TRUE, interval="prediction")
+# WEIRD ERROR :(
+# Error in eval(expr, envir, enclos) : object 'Boro' not found
+
+head(houseTest)
+unique(houseTest)
